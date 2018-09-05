@@ -1,0 +1,34 @@
+.navbar {
+   background-color:#add8e6;
+}
+
+.flashes p {
+	color:red;
+	margin-bottom: 0px;
+}
+
+.welcome {
+	width: auto;
+	display: block;
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: #72bcd4;
+}
+
+.tagline {
+	text-align: center;
+}
+
+.about {
+	background-color: #72bcd4;
+	text-align: center;
+}
+
+.about-page {
+	background-color: #72bcd4;
+}
+
+.welcome-container, .about-container{
+	background-color: #72bcd4;
+}

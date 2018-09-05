@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/stylesheet.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script src="static/scripts/activeTab.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+    <head>
+        <title>Eamon's Library</title>
+    </head>
+    <nav class="navbar navbar-expand-lg navbar-light">
+	  <a class="navbar-brand" href="#">Eamon's Library</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	    {% if session["view"] == "index"%}
+	    	<li class="nav-item active">
+	    {% else %}
+	    	<li class="nav-item">
+	    {% endif%}
+	        <a class="nav-link" href="{{ url_for('index') }}">About</span></a>
+	      </li>
+	      {% if session["userId"]%}
+	        {% if session["view"] == "search"%}
+	    		<li class="nav-item active">
+	    	{% else %}
+	    		<li class="nav-item">
+	    	{% endif%}
+	          <a class="nav-link" href="{{ url_for('search') }}">Search Books</a>
+	        </li>
+	        <li class="nav-item">
+	            <a class="nav-link" href="{{ url_for('logOut') }}">Sign Out</a>
+	        </li>
+	      {% else %}
+	        {% if session["view"] == "login"%}
+	    		<li class="nav-item active">
+	    	{% else %}
+	    		<li class="nav-item">
+	    	{% endif%}
+	          <a class="nav-link" href="{{ url_for('login') }}">Sign In</a>
+	        </li>
+	        {% if session["view"] == "registration"%}
+	    		<li class="nav-item active">
+	    	{% else %}
+	    		<li class="nav-item">
+	    	{% endif%}
+	          <a class="nav-link" href="{{ url_for('registration') }}">Sign Up</a>
+	        </li>
+	      {% endif %}
+	    </ul>
+	  </div>
+	</nav>
+
+    {% block heading %}{% endblock %}
+
+    {% block body %}{% endblock %}
+</html>
