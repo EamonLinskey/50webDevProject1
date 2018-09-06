@@ -1,24 +1,33 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-   Please Sign In!
 {% endblock %}
 
 {% block body %}
-    <form action="{{ url_for('loggedIn') }}" method="post">
-    	<input name="username" placeholder="Username">
-    	<br>
-    	<input name="password" placeholder="Password" type="password">
-    	<br>
-    	{% with messages = get_flashed_messages() %}
-		  {% if messages %}
-		    <div class=flashes>
-		    {% for message in messages %}
-		      <p>{{ message }}</p>
-		    {% endfor %}
-		    </div>
-		  {% endif %}
-		{% endwith %}
-		<input type="submit" value="Log In">
-	</form> 
+	<body>
+		<div class="container signIn-container">
+			<div class="signIn">
+				Please Sign In!
+			    <form action="{{ url_for('loggedIn') }}" method="post">
+			    	<input name="username" placeholder="Username" required>
+			    	<br>
+			    	<input name="password" placeholder="Password" type="password" required>
+			    	<br>
+			    	{% with messages = get_flashed_messages() %}
+					  {% if messages %}
+					    <div class=flashes>
+					    {% for message in messages %}
+					      <p>{{ message }}</p>
+					    {% endfor %}
+					    </div>
+					  {% endif %}
+					{% endwith %}
+					<input type="submit" value="Log In">
+
+				</form> 
+				<text class="signup-text">Don't Have an Account yet? <a href="{{ url_for('registration')}}">Sign Up Here</a></text>
+
+			</div>
+		</div>
+	</body>
 {% endblock %}

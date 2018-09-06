@@ -1,36 +1,40 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-   Please register for an Account 
+   
 {% endblock %}
 
 {% block body %}
-	
-	<form action="{{ url_for('registred') }}" method="post">
-	    
-    	<input name="username" id="username" placeholder="Username" required>
-    	<br>
-    	{% with messages = get_flashed_messages() %}
-		  {% if messages %}
-		    <div class=flashes>
-		    {% for message in messages %}
-		      <p>{{ message }}</p>
-		    {% endfor %}
-		    </div>
-		  {% endif %}
-		{% endwith %}
-	
+	<div class="container registration-container">
+		<div class="registration">
+			Please register for an account 
+			<form action="{{ url_for('registred') }}" method="post">
+		    	<input name="username" id="username" placeholder="Username" required>
+		    	<br>
+		    	{% with messages = get_flashed_messages() %}
+				  {% if messages %}
+				    <div class=flashes>
+				    {% for message in messages %}
+				      <p>{{ message }}</p>
+				    {% endfor %}
+				    </div>
+				  {% endif %}
+				{% endwith %}
+			
 
-	
-    	<input name="password" id="password" placeholder="Password" type="password" required>
-		<br>
+			
+		    	<input name="password" id="password" placeholder="Password" type="password" required>
+				<br>
 
 
-    	<input name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" type="password" required>
-		<br>
+		    	<input name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" type="password" required>
+				<br>
 
-		<input type="submit" value="Submit">
-	</form>
+				<input type="submit" value="Submit">
+			</form>
+			<text class="registration-text">Already have an account? <a href="{{ url_for('login')}}">Sign in here</a></text>
+		</div>
+	</div>
 	<script src="{{url_for('static', filename='scripts/passMatch.js')}}"></script>
 	
 {% endblock %}

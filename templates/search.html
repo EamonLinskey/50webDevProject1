@@ -1,34 +1,43 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-   What Book are you Interested in?
+   
 {% endblock %}
 
 {% block body %}
-    <form action="{{ url_for('search') }}">
-    	<input name="search" placeholder="Search by Title Author or ISBN#">
-    	<input type="submit" value="Search">
-    </form>
-
-    {% if request.args.get('search') %}
-    	{% if results %}
-    		
-    		<table>
-	    		<th>Title</th>
-	    		<th>Author</th>
-	    		<th>Year Published</th>
-	    		<th>ISBN#</th>
-			{% for result in results %}
-				<tr>
-	        		<td><a href= book/{{result[4]}} >{{result[1]}}</a></td>
-	        		<td>{{result[2]}}</td>
-	        		<td>{{result[3]}}</td>
-	        		<td>{{result[0]}}</td>
-	        	</tr>
-	    	{% endfor %} 
-    		</table> 
-    	{% else %}
-    		<div>Sorry, there were no results</div>
-    	{% endif %}
-	{% endif %}
+	<body>
+		<div class="container search-field-container">
+			<div class="search-field">
+				What Book are you Interested in {{session["username"]}}?
+			    <form action="{{ url_for('search') }}">
+			    	<input id="searchbar" name="search" placeholder="Search by Title Author or ISBN#">
+			    	<input type="submit" value="Search">
+			    </form>
+			</div>
+		</div>
+		<div class="container book-table-container">
+			<div class="book-table">
+			    {% if request.args.get('search') %}
+			    	{% if results %}
+			    		<table>
+				    		<th>Title</th>
+				    		<th>Author</th>
+				    		<th>Year Published</th>
+				    		<th>ISBN#</th>
+						{% for result in results %}
+							<tr>
+				        		<td><a href= book/{{result[4]}} >{{result[1]}}</a></td>
+				        		<td>{{result[2]}}</td>
+				        		<td>{{result[3]}}</td>
+				        		<td>{{result[0]}}</td>
+				        	</tr>
+				    	{% endfor %} 
+			    		</table> 
+			    	{% else %}
+			    		<div>Sorry, there were no results</div>
+			    	{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</body>
 {% endblock %}

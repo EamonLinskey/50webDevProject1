@@ -1,10 +1,60 @@
+
 .navbar {
-   background-color:#add8e6;
+   background-color:#BD997A;
+   font-family: "Bookman Old Style";
 }
 
 .flashes p {
 	color:red;
 	margin-bottom: 0px;
+}
+
+input{
+	margin: 1%;
+}
+
+body{
+	background-color: #deccbc;
+	font-family: "Bookman Old Style";
+	font-size: 20px;
+}
+
+
+.signup-text, .registration-text{
+	font-family: "Bookman Old Style";
+	font-size: 10pt;
+}
+
+
+.signIn-container, .registration-container, .search-field-container{
+	padding-top: 2.5%;
+}
+
+.signIn, .registration, .search-field{
+	margin:0 auto;
+	width: 50%;
+	text-align: center;
+}
+
+.book-table{
+	margin: auto;
+	width: 80%;
+	text-align: left;
+}
+
+table, th, td {
+	margin:0 auto;
+	border: 1px solid black;
+}
+
+tr:nth-child(even) {background-color: #deccbc;}
+tr:nth-child(odd) {background-color: #C3A387;}
+.search-field #searchbar {
+	width: 60%;
+}
+
+table a {
+	color: black;
 }
 
 .welcome {
@@ -13,7 +63,8 @@
 	text-align: center;
 	padding-top: 50px;
 	padding-bottom: 50px;
-	background-color: #72bcd4;
+	background-color: #deccbc;
+	font-family: "Bookman Old Style";
 }
 
 .tagline {
@@ -21,14 +72,17 @@
 }
 
 .about {
-	background-color: #72bcd4;
+	background-color: #deccbc;
 	text-align: center;
+	margin:0 auto;
+	width: 75%;
+	font-family: "Bookman Old Style";
 }
 
 .about-page {
-	background-color: #72bcd4;
+	background-color: #deccbc;
 }
 
 .welcome-container, .about-container{
-	background-color: #72bcd4;
+	background-color: #deccbc;
 }

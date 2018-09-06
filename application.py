@@ -165,8 +165,8 @@ def registred():
 		register_new_user(username, password)
 		session["userId"] = authenticate_user(username, password)[1]
 		session["username"] = username
-		session["view"] = "registred"
-		return render_template("registred.html")
+		session["view"] = "search"
+		return render_template("search.html")
 
 @app.route("/login")
 def login():
