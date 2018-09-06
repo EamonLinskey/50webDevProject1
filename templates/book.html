@@ -1,69 +1,79 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-   {{book[1]}}
+<script src="../static/scripts/textAreaTab.js"></script>
 {% endblock %}
 
 {% block body %}
-	<div> Author: {{book[2]}}</div>
-	
-    <div> Publication Year: {{book[3]}}</div>
-    
-    <div> ISBN: {{book[0]}}</div>
-
-    <div> Average Rating: {{goodReads[1]}}</div>
-
-    <div> Number of Ratings: {{goodReads[0]}}</div>
-
-    <div> 
-    	{% if reviews %}
-	    	<table>
-	    		<tr>
-		    		<th> Reviewer </th>
-		    		<th> Stars </th>
-		    		<th> Review </th>
-		    	</tr>
-		    	{% for review in reviews %}
-			    	<tr>
-			    		<td> {{review[0]}} </td>
-			    		<td> {{review[3]}} </td>
-			    		<td> {{review[2]}} </td>
-			    	</tr>
-			    {% endfor %}
-	    	</table>
-	    {% else %}
-	    	<div>There are currently no reviews for this book. You could be the first to leave one!</div>
-	    {% endif %}
+<body>
+	<div class="container book-info-container"> 
+		<div class = "book-info">
+			<div id="title"> {{book[1]}} </div>
+			<div id="author"> {{book[2]}}</div>
+		    <div> Publication Year: {{book[3]}}</div>
+		    <div> ISBN: {{book[0]}}</div>
+		</div>
 	</div>
-
-	{% if reviewed %}
-		<div>Thanks for your review!</div>
-	{% else %}
-		<div>
-			Leave a Review of your own!
-			<div>
-				<form action="{{ url_for('review', bookId = book[4]) }}" method="post">
-					<table>
-						<th>
-							<select id="rating" name="rating">
-							  <option value=1>1 star</option>
-							  <option value=2>2 star</option>
-							  <option value=3>3 star</option>
-							  <option value=4>4 star</option>
-							  <option value=5>5 star</option>
-							</select>
-						</th>
-						<th>
-							<textarea id="review" name="review" rows="1" cols="20" required></textarea>
-						</th>
-						<th>
-							<input type="submit" value="Submit">
-						</th>
-					</table>
-				</form>
+		<div class="container ratings-container">
+			<div class="ratings">    
+			    {% if goodReads%}
+				    <div> {{book[1]}} recieved <b>{{goodReads[0]}}</b> ratings on Goodreads and has an average rating of <b>{{goodReads[1]}}</b> stars</div>
+				    
+			    {% else %}
+			    	<div> Not GoodReads ratings yet</div>
+			    {% endif %}
 			</div>
 		</div>
-	{% endif %}
-
-
+	</div>
+    <div class="container reviews-container"> 
+    	<div class="reviews">
+	    	{% if reviews %}
+	    		<div class="lib-reviews">Here are what other Eamon's Library users thought of {{book[1]}}</div>
+			    	{% for review in reviews %}
+			    		<div class ="review-heading-container" >
+					    	<div class="review-heading"> <b>{{review[0]}}</b> rated this book <b>{{review[3]}} stars</b> </div>
+					    	<div class="review"> {{review[2]}} </div>
+					    </div>
+				    	<br>
+				    	</tr>
+				    {% endfor %}
+		    {% else %}
+		    	<div class="lib-reviews">There are currently no Eamon's Library reviews for this book. You could be the first to leave one!</div>
+		    {% endif %}
+		</div>
+	</div>
+	<div class="container user-review-container"> 
+    	<div class="user-review">
+			{% if reviewed %}
+				<div class="pend-review">Thanks for your review!</div>
+			{% else %}
+				<div class="pend-review">
+					Leave a Review of your own!
+					<div>
+						<form action="{{ url_for('review', bookId = book[4]) }}" method="post">
+							<div class="contatiner new-review-container">
+								<div class="new-review">
+									<textarea id="review" name="review" rows="3" cols="40" onkeydown="tabFix(event, this)" required></textarea>
+								</div>
+							</div>
+							<div class="star-rating-container">
+								<div class="star-rating">
+										<select id="rating" name="rating" required>
+										  <option disabled selected value class="disabled">Star Rating</option>
+										  <option value=1>1 star</option>
+										  <option value=2>2 star</option>
+										  <option value=3>3 star</option>
+										  <option value=4>4 star</option>
+										  <option value=5>5 star</option>
+										</select>
+										<input type="submit" value="Submit">
+								</div>
+							<div>
+						</form>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+<body>
 {% endblock %}

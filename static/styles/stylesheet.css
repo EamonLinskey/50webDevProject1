@@ -36,6 +36,49 @@ body{
 	text-align: center;
 }
 
+.book-info {
+	margin:0 auto;
+	width: 80%;
+	text-align: center;
+}
+
+.lib-reviews{
+	margin:0 auto;
+	width: 80%;
+	text-align: center;
+	padding-bottom: 2%;
+}
+
+.new-review-container, .star-rating, .pend-review{
+	margin:0 auto;
+	text-align: center;
+}
+
+.user-review-container{
+	padding-top: 2.5%;
+}
+
+.review-heading-container{
+	background-color: #CCB199;
+}
+
+.review-heading{
+	background-color: #BD997A;
+	font-size: 24px;
+}
+
+.disabled {
+	display:none
+}
+
+.ratings{
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
+	margin:0 auto;
+	width: 50%;
+	text-align: center;
+}
+
 .book-table{
 	margin: auto;
 	width: 80%;
@@ -47,14 +90,35 @@ table, th, td {
 	border: 1px solid black;
 }
 
-tr:nth-child(even) {background-color: #deccbc;}
-tr:nth-child(odd) {background-color: #C3A387;}
+tr:nth-child(even) {background-color: #BD997A;}
+tr:nth-child(odd) {background-color: #CCB199;}
+
+
+.head th {
+	background-color: #BD997A;
+	padding-bottom: 2%;
+}
+
+.year-published {
+	padding-left: 2%;
+}
+
 .search-field #searchbar {
 	width: 60%;
 }
 
 table a {
 	color: black;
+}
+
+
+#title{
+	padding-top: 5%;
+	font-size: 40px;
+}
+
+#author{
+	font-size: 30px;
 }
 
 .welcome {
